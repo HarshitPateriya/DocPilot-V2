@@ -14,7 +14,7 @@ pytesseract>=0.3.10         # Python wrapper for Tesseract OCR engine
                             # On macOS: brew install tesseract
 
 # ── Vector store ───────────────────────────────────────────────────────────────
-chromadb>=0.5.0             # Local vector database; stores embeddings + metadata.
+chromadb==0.5.23             # Local vector database; stores embeddings + metadata.
                             # Uses EphemeralClient (in-memory) — no disk writes needed.
                             # DEPLOYMENT NOTE: chromadb pulls in many transitive deps
                             # (onnxruntime, grpcio, etc.). If build times are a concern
