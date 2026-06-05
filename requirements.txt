@@ -1,0 +1,38 @@
+# ── Core framework ─────────────────────────────────────────────────────────────
+streamlit>=1.35.0           # Web UI framework
+
+# ── LLM API ────────────────────────────────────────────────────────────────────
+groq>=0.9.0                 # Groq API client (Llama 3.3 70B)
+
+# ── PDF processing ─────────────────────────────────────────────────────────────
+pypdf>=4.2.0                # Primary PDF text extraction (pure-python, fast)
+pillow>=10.0.0              # Image handling; required by pytesseract and PDF image export
+pytesseract>=0.3.10         # Python wrapper for Tesseract OCR engine
+                            # DEPLOYMENT NOTE: Tesseract binary must be installed separately.
+                            # On Streamlit Cloud add to packages.txt: tesseract-ocr
+                            # On Ubuntu/Debian: apt-get install tesseract-ocr
+                            # On macOS: brew install tesseract
+
+# ── Vector store ───────────────────────────────────────────────────────────────
+chromadb>=0.5.0             # Local vector database; stores embeddings + metadata.
+                            # Uses EphemeralClient (in-memory) — no disk writes needed.
+                            # DEPLOYMENT NOTE: chromadb pulls in many transitive deps
+                            # (onnxruntime, grpcio, etc.). If build times are a concern
+                            # on Streamlit Cloud, pin: chromadb==0.5.23
+
+# ── Embeddings ─────────────────────────────────────────────────────────────────
+sentence-transformers>=3.0.0  # Semantic embeddings via all-MiniLM-L6-v2 (80 MB model).
+                               # Downloads once and caches at ~/.cache/torch/sentence_transformers
+                               # DEPLOYMENT NOTE: First cold start on Streamlit Cloud will
+                               # take ~30-60s for model download. Subsequent starts use cache.
+                               # If HuggingFace is blocked in your environment, the app
+                               # automatically falls back to TF-IDF keyword embeddings.
+
+scikit-learn>=1.4.0         # TF-IDF fallback embeddings + cosine similarity utilities.
+                            # Also used for vocabulary-based semantic matching.
+numpy>=1.26.0               # Numerical operations for embedding normalization.
+
+# ── Text splitting ─────────────────────────────────────────────────────────────
+langchain-text-splitters>=0.2.0  # RecursiveCharacterTextSplitter for intelligent chunking.
+                                  # Splits on paragraph → sentence → word boundaries,
+                                  # preserving semantic units better than fixed-size splits.
