@@ -16,7 +16,7 @@ pytesseract>=0.3.10         # Python wrapper for Tesseract OCR engine
 # ── Vector store ───────────────────────────────────────────────────────────────
 # Vector store
 chromadb==0.4.24
-protobuf==3.20.3s
+protobuf==3.20.3
            # Local vector database; stores embeddings + metadata.
                             # Uses EphemeralClient (in-memory) — no disk writes needed.
                             # DEPLOYMENT NOTE: chromadb pulls in many transitive deps
