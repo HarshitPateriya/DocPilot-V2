@@ -33,7 +33,7 @@ sentence-transformers>=3.0.0  # Semantic embeddings via all-MiniLM-L6-v2 (80 MB 
 
 scikit-learn>=1.4.0         # TF-IDF fallback embeddings + cosine similarity utilities.
                             # Also used for vocabulary-based semantic matching.
-numpy>=1.26.0               # Numerical operations for embedding normalization.
+numpy==1.26.4              # Numerical operations for embedding normalization.
 
 # ── Text splitting ─────────────────────────────────────────────────────────────
 langchain-text-splitters>=0.2.0  # RecursiveCharacterTextSplitter for intelligent chunking.
